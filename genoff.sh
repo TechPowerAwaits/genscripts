@@ -1,7 +1,7 @@
+#! /bin/sh
+
 # Copyright 2021 Richard Johnston <techpowerawaits@outlook.com>
 # SPDX-license-identifer: GPL-2.0-only
-
-#! /bin/sh
 
 if [ -e /var/tmp/gen-working ]; then
         echo "Can't poweroff."
