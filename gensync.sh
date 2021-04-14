@@ -1,9 +1,10 @@
+#! /bin/sh
+
 # Copyright 2021 Richard Johnston <techpowerawaits@outlook.com>
 # SPDX-license-identifer: GPL-2.0-only
 
-#! /bin/sh
-echo $(uname -a)
-echo $(date)
+uname -a
+date
 echo
 if [ -e /var/tmp/gen-working ]; then
         echo "An installation is in process."
@@ -16,14 +17,12 @@ if [ -e /var/tmp/gensync-"$(date --rfc-3339=date)" ]; then
         echo "Done for now."
         exit 1
 else
-        emerge --sync --quiet=y
-        if [ $? -ne 0 ]; then
+        if ! emerge --sync --quiet=y; then
                 echo
                 echo "emerge --sync failed."
                 echo "Falling back to webrsync."
                 echo
-                emerge-webrsync
-                if [ $? -ne 0 ]; then
+                if ! emerge-webrsync; then
                         echo
                         echo "webrsync failed."
                         echo "Done for now."
